@@ -1,5 +1,12 @@
 <?php
-session_start();
+session_start(); // Start the session
+
+// Check if the user is logged in
+if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
+    // Not logged in, redirect to login page
+    header('Location: dashboard/employees/index.php');
+    exit();
+}
 include("dashboard/includes/connect_database.php");
 if(isset($_POST['email'])){
   $auth = false;
@@ -23,7 +30,7 @@ if(isset($_POST['email'])){
   if ($auth == true){
     $_SESSION['loggedin'] = true;
     $_SESSION['email'] = $email;
-    header('locaion: dashboard/employees/index.php');
+    header('location: dashboard/employees/index.php');
   }
 }
 ?>

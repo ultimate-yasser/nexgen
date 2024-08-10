@@ -17,7 +17,8 @@
                     <!-- Logo text -->
                     <span class="logo-text ms-2">
                         <!-- dark Logo text -->
-                        <img decoding="async" src="https://via.placeholder.com/100x25/1F262D/FF8225?text=NexGen+Solutions" alt="NexGen Solutions">
+                        NexGen Solutions
+                        <!-- <img decoding="async" src="https://via.placeholder.com/1500x250/1F262D/FF8225?text=NexGen+Solutions" alt="NexGen Solutions", height="50"> -->
                     </span>
                 </a>
                 <a class="nav-toggler waves-effect waves-light d-block d-md-none" href="javascript:void(0)"><i class="ti-menu ti-close"></i></a>
@@ -46,7 +47,7 @@
                     waves-effect waves-dark
                     pro-pic
                     " href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            <img src="../../assets/images/users/1.jpg" alt="user" class="rounded-circle" width="31" />
+                            <img src="https://via.placeholder.com/500x150/1F262D/FF8225?text=<?= ltrim(strstr("{$_SESSION['email']}", '@', true), '@'); ?>" alt="user" height="31" />
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end user-dd animated" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="../../index.php"><i class="mdi mdi-account me-1 ms-1"></i>Home</a>

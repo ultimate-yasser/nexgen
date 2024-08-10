@@ -1,3 +1,23 @@
+<?php
+$database_source = 'mysql:host=localhost;dbname=nexgen';
+$username = 'root';
+$password = '';
+try {
+    $connect = new PDO($database_source, $username, $password);
+}catch (PDOException $e) {
+    echo 'Connection Failed'. $e->getMessage();
+    exit();
+}
+$query = 'select e.employeeNumber as ssn, concat(e.firstName, " ", e.lastName) as name 
+, offices.city, e.jobTitle, e.isAdmin
+from employees as e left join offices on 
+e.officeCode = offices.officeCode;';
+$result = $connect->query($query);
+$rows = $result->fetchAll(PDO::FETCH_ASSOC);
+
+?>
+
+
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
 
@@ -145,23 +165,23 @@
                                     <table id="zero_config" class="table table-striped table-bordered">
                                         <thead>
                                             <tr>
+                                                <th>SSN</th>
                                                 <th>Name</th>
-                                                <th>Position</th>
                                                 <th>Office</th>
-                                                <th>Age</th>
-                                                <th>Start date</th>
-                                                <th>Salary</th>
+                                                <th>Title</th>
+                                                <th>Admin</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr>
-                                                <td>Tiger Nixon</td>
-                                                <td>System Architect</td>
-                                                <td>Edinburgh</td>
-                                                <td>61</td>
-                                                <td>2011/04/25</td>
-                                                <td>$320,800</td>
-                                            </tr>
+                                            <?php foreach ($rows as $row){ ?>
+                                                <tr>
+                                                    <td><?= $row['ssn'] ?></td>
+                                                    <td><?= $row['name'] ?></td>
+                                                    <td><?= $row['city'] ?></td>
+                                                    <td><?= $row['jobTitle'] ?></td>
+                                                    <td><?= $row['isAdmin'] ?></td>
+                                                </tr>
+                                            <?php } ?>
                                     </table>
                                 </div>
                             </div>

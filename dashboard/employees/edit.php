@@ -5,14 +5,19 @@ if (!isset($_GET["ssn"])){
     exit;
 }
 $ssn = $_GET["ssn"];
+
 $query = "select e.employeeNumber as ssn, concat(e.firstName, ' ', e.lastName) as name 
 , offices.city, e.jobTitle, e.isAdmin, e.email as email, e.officecode as officeCode,
 offices.phone as officePhone, offices.addressLine1 as officeAdress
 from employees as e left join offices on 
 e.officeCode = offices.officeCode
-where e.employeeNumber= 1002";
+where e.employeeNumber= $ssn";
 $result = $connect->query($query);
 $data = $result->fetch(PDO::FETCH_ASSOC);
+if (!$data) {
+    echo "<h1>Wrong Page</h1>";
+    die();
+}
 $documnet_title = "Show | {$data['name']}";
 ?>
 

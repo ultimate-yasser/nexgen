@@ -91,10 +91,10 @@ $documnet_title = "Show | {$data['name']}";
                                         <td>
                                             <?php if ($data['isAdmin']){?>
                                                 <span>Admin</span>
-                                                <a href="">Remove Admin Access</a>
+                                                <a href="remove_admin.php?ssn=<?= $data['ssn'] ?>">Remove Admin Access</a>
                                             <?php }else{ ?>
                                                 <span>Not Admin</span>
-                                                <a href="">Give Admin Access</a>
+                                                <a href="make_admin.php?ssn=<?= $data['ssn'] ?>">Give Admin Access</a>
                                             <?php } ?>
                                         </td>
                                     </tr>

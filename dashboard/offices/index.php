@@ -1,12 +1,11 @@
 <?php
 include "../includes/connect_database.php";
-$query = 'select e.employeeNumber as ssn, concat(e.firstName, " ", e.lastName) as name 
-, offices.city, e.jobTitle, e.isAdmin
-from employees as e left join offices on 
-e.officeCode = offices.officeCode;';
+$query = '
+select o.officeCode, o.country, o.city, o.phone
+from offices as o;';
 $result = $connect->query($query);
 $rows = $result->fetchAll(PDO::FETCH_ASSOC);
-$documnet_title = "Employees"
+$documnet_title = "Offices"
 ?>
 
 
@@ -27,7 +26,7 @@ $documnet_title = "Employees"
         <div class="page-breadcrumb">
             <div class="row">
                 <div class="col-12 d-flex no-block align-items-center">
-                    <h4 class="page-title">Employees</h4>
+                    <h4 class="page-title">Offices</h4>
                 </div>
             </div>
         </div>
@@ -45,30 +44,22 @@ $documnet_title = "Employees"
                                 <table id="zero_config" class="table table-striped table-bordered">
                                     <thead>
                                         <tr>
-                                            <th>SSN</th>
-                                            <th>Name</th>
-                                            <th>Office</th>
-                                            <th>Title</th>
-                                            <th>Admin</th>
+                                            <th>Office Code</th>
+                                            <th>Office Country</th>
+                                            <th>Office City</th>
+                                            <th>Office Address</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <?php foreach ($rows as $row) { ?>
                                             <tr>
-                                                <td><?= $row['ssn'] ?></td>
-                                                <td><?= $row['name'] ?></td>
+                                                <td><?= $row['officeCode'] ?></td>
+                                                <td><?= $row['country'] ?></td>
                                                 <td><?= $row['city'] ?></td>
-                                                <td><?= $row['jobTitle'] ?></td>
-                                                <td><?php
-                                                    if ($row['isAdmin']) {
-                                                        echo 'Yes';
-                                                    } else {
-                                                        echo 'No';
-                                                    }
-                                                    ?></td>
+                                                <td><?= $row['phone'] ?></td>
                                                 <td>
-                                                    <a href="edit.php?ssn=<?= $row['ssn'] ?>"><img width="20px" src="../../assets/images/edit.png" alt="edit"></a>
+                                                    <a href="edit.php?officeCode=<?= $row['officeCode'] ?>"><img width="20px" src="../../assets/images/edit.png" alt="edit"></a>
                                                 </td>
                                             </tr>
                                         <?php } ?>

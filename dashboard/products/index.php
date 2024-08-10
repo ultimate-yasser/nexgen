@@ -1,4 +1,5 @@
 <?php
+include("../includes/session.php");
 include "../includes/connect_database.php";
 $query = '
 select p.productName, p.productDescription, p.buyPrice as price, p.productCode as code

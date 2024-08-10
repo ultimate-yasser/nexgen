@@ -1,4 +1,5 @@
 <?php
+include("../includes/session.php");
 include "../includes/connect_database.php";
 $query = 'select e.employeeNumber as ssn, concat(e.firstName, " ", e.lastName) as name 
 , offices.city, e.jobTitle, e.isAdmin

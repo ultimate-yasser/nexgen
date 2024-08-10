@@ -1,4 +1,5 @@
 <?php
+include("../includes/session.php");
 if (!isset($_GET["ssn"])){
     echo "<h1>Wrong Page</h1>";
     exit;

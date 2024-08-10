@@ -1,3 +1,34 @@
+<?php
+session_start();
+include("dashboard/includes/connect_database.php");
+if(isset($_POST['email'])){
+  $auth = false;
+  $email = $_POST['email'];
+  $password = $_POST['password'];
+  $correct_password = 'root';
+  $query = "
+  select employees.email
+  from employees
+  where employees.isAdmin = true;
+  ";
+  $result = $connect->query($query);
+  $rows = $result->fetchAll(PDO::FETCH_ASSOC);
+  foreach($rows as $row){
+    if ($row['email'] == $email){
+      if ($password == $correct_password){
+        $auth = true;
+      }
+    }
+  }
+  if ($auth == true){
+    $_SESSION['loggedin'] = true;
+    $_SESSION['email'] = $email;
+    header('locaion: dashboard/employees/index.php');
+  }
+}
+?>
+
+
 <!DOCTYPE html>
 <html dir="ltr">
   <head>
@@ -66,6 +97,10 @@
         <div class="auth-box border-top border-secondary">
           <div id="loginform">
             <div class="text-center pt-3 pb-3">
+            <?php if(isset($auth)){
+                if($auth == false){
+                  echo 'Wrong Email or Password, Try again';
+              }} ?>
             </div>
             <!-- Form -->
             <form

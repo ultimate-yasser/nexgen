@@ -1,4 +1,5 @@
 <?php
+include("../includes/session.php");
 include "../includes/connect_database.php";
 $query = '
 select o.officeCode, o.country, o.city, o.phone

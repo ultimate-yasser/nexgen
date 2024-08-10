@@ -1,4 +1,5 @@
 <?php
+include("../includes/session.php");
 include "../includes/connect_database.php";
 if (!isset($_GET["officeCode"])){
     echo "<h1>Wrong Page</h1>";

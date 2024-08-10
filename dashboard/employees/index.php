@@ -68,9 +68,8 @@ $documnet_title = "Employees"
                                                     }
                                                     ?></td>
                                                 <td>
-                                                    <a href="#"><img width="20px" src="../../assets/images/show.png" alt=""></a>
-                                                    <a href="#"><img width="20px" src="../../assets/images/edit.png" alt=""></a>
-                                                    <a href="#"><img width="20px" src="../../assets/images/delete.png" alt=""></a>
+                                                    <a href="edit.php?ssn=<?= $row['ssn'] ?>"><img width="20px" src="../../assets/images/edit.png" alt="edit"></a>
+                                                    <a href="delete.php?ssn=<?= $row['ssn'] ?>"><img width="20px" src="../../assets/images/delete.png" alt="delete"></a>
                                                 </td>
                                             </tr>
                                         <?php } ?>

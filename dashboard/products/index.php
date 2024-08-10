@@ -1,8 +1,8 @@
 <?php
 include "../includes/connect_database.php";
 $query = '
-select o.officeCode, o.country, o.city, o.phone
-from offices as o;';
+select p.productName, p.productDescription, p.buyPrice as price, p.productCode as code
+from products as p';
 $result = $connect->query($query);
 $rows = $result->fetchAll(PDO::FETCH_ASSOC);
 $documnet_title = "Products"
@@ -26,7 +26,7 @@ $documnet_title = "Products"
         <div class="page-breadcrumb">
             <div class="row">
                 <div class="col-12 d-flex no-block align-items-center">
-                    <h4 class="page-title">Offices</h4>
+                    <h4 class="page-title">Products</h4>
                 </div>
             </div>
         </div>
@@ -44,22 +44,20 @@ $documnet_title = "Products"
                                 <table id="zero_config" class="table table-striped table-bordered">
                                     <thead>
                                         <tr>
-                                            <th>Office Code</th>
-                                            <th>Office Country</th>
-                                            <th>Office City</th>
-                                            <th>Office Address</th>
+                                            <th>Name</th>
+                                            <th>Description</th>
+                                            <th>Price</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <?php foreach ($rows as $row) { ?>
                                             <tr>
-                                                <td><?= $row['officeCode'] ?></td>
-                                                <td><?= $row['country'] ?></td>
-                                                <td><?= $row['city'] ?></td>
-                                                <td><?= $row['phone'] ?></td>
+                                                <td><?= $row['productName'] ?></td>
+                                                <td><?= $row['productDescription'] ?></td>
+                                                <td><?= $row['price'] ?></td>
                                                 <td>
-                                                    <a href="edit.php?officeCode=<?= $row['officeCode'] ?>"><img width="20px" src="../../assets/images/edit.png" alt="edit"></a>
+                                                    <a href="edit.php?code=<?= $row['code'] ?>"><img width="20px" src="../../assets/images/edit.png" alt="edit"></a>
                                                 </td>
                                             </tr>
                                         <?php } ?>

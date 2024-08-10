@@ -1,0 +1,66 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8eded;
+}
+
+.dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f8eded; /* White header */
+    padding: 10px 20px;
+    color: #173b45;
+    border-bottom: 2px solid #ff8225; /* Slim button border added */
+}
+
+.logo img {
+    height: 40px;
+}
+
+.user-menu {
+    position: relative;
+    cursor: pointer;
+}
+
+.username {
+    margin-right: 5px;
+    color: #173b45;
+}
+
+.arrow {
+    font-size: 14px;
+    color: #ff8225;
+}
+
+.dropdown {
+    display: none;
+    position: absolute;
+    right: 0;
+    background-color: #b43f3f;
+    color: #f8eded;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    padding: 10px;
+    border-radius: 4px;
+}
+
+.dropdown a {
+    color: #f8eded;
+    text-decoration: none;
+    display: block;
+    margin: 5px 0;
+}
+
+.dropdown a:hover {
+    background-color: #ff8225;
+    color: #173b45;
+}
+
+.user-menu:hover .dropdown {
+    display: block;
+}
+
+.content {
+    padding: 20px;
+}

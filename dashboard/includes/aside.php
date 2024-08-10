@@ -8,13 +8,16 @@
                     <a class="sidebar-link waves-effect waves-dark sidebar-link" href="#" aria-expanded="false"><i class="mdi mdi-view-dashboard"></i><span class="hide-menu">Home</span></a>
                 </li>
                 <li class="sidebar-item">
-                    <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="mdi mdi-receipt"></i><span class="hide-menu">Employees </span></a>
+                    <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="mdi mdi-receipt"></i><span class="hide-menu">Dashboards</span></a>
                     <ul aria-expanded="false" class="collapse first-level">
                         <li class="sidebar-item">
-                            <a href="#" class="sidebar-link"><i class="mdi mdi-note-outline"></i><span class="hide-menu"> All Employees </span></a>
+                            <a href="#" class="sidebar-link"><i class="mdi mdi-note-outline"></i><span class="hide-menu">Employees</span></a>
                         </li>
                         <li class="sidebar-item">
-                            <a href="#" class="sidebar-link"><i class="mdi mdi-note-plus"></i><span class="hide-menu"> Add Employee </span></a>
+                            <a href="#" class="sidebar-link"><i class="mdi mdi-note-plus"></i><span class="hide-menu">Offices</span></a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a href="#" class="sidebar-link"><i class="mdi mdi-note-plus"></i><span class="hide-menu">Product Lines</span></a>
                         </li>
                     </ul>
                 </li>

@@ -170,6 +170,7 @@ $rows = $result->fetchAll(PDO::FETCH_ASSOC);
                                                 <th>Office</th>
                                                 <th>Title</th>
                                                 <th>Admin</th>
+                                                <th>Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -179,7 +180,16 @@ $rows = $result->fetchAll(PDO::FETCH_ASSOC);
                                                     <td><?= $row['name'] ?></td>
                                                     <td><?= $row['city'] ?></td>
                                                     <td><?= $row['jobTitle'] ?></td>
-                                                    <td><?= $row['isAdmin'] ?></td>
+                                                    <td><?php 
+                                                    if ($row['isAdmin']){
+                                                        echo 'Yes';
+                                                    }else{echo 'No';}
+                                                    ?></td>
+                                                    <td>
+                                                        <a href="#"><img width="20px" src="../../assets/images/show.png" alt=""></a>
+                                                        <a href="#"><img width="20px" src="../../assets/images/edit.png" alt=""></a>
+                                                        <a href="#"><img width="20px" src="../../assets/images/delete.png" alt=""></a>
+                                                    </td>
                                                 </tr>
                                             <?php } ?>
                                     </table>

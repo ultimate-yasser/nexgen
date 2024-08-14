@@ -11,16 +11,25 @@
                     <a class="sidebar-link waves-effect waves-dark sidebar-link" href="../../logout.php" aria-expanded="false"><i class="mdi mdi-view-dashboard"></i><span class="hide-menu">Logout</span></a>
                 </li>
                 <li class="sidebar-item">
-                    <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="mdi mdi-receipt"></i><span class="hide-menu">Dashboards</span></a>
+                    <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="mdi mdi-receipt"></i><span class="hide-menu">Employees</span></a>
                     <ul aria-expanded="false" class="collapse first-level">
                         <li class="sidebar-item">
-                            <a href="../employees/index.php" class="sidebar-link"><i class="mdi mdi-note-outline"></i><span class="hide-menu">Employees</span></a>
+                            <a href="../employees/index.php" class="sidebar-link"><i class="mdi mdi-note-outline"></i><span class="hide-menu">Show Employees</span></a>
                         </li>
                         <li class="sidebar-item">
-                            <a href="../offices/index.php" class="sidebar-link"><i class="mdi mdi-note-plus"></i><span class="hide-menu">Offices</span></a>
+                            <a href="../employees/create.php" class="sidebar-link"><i class="mdi mdi-note-outline"></i><span class="hide-menu">Insert Employee</span></a>
                         </li>
+                    </ul>
+                    <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="mdi mdi-receipt"></i><span class="hide-menu">Offices</span></a>
+                    <ul aria-expanded="false" class="collapse first-level">
                         <li class="sidebar-item">
-                            <a href="../products/index.php" class="sidebar-link"><i class="mdi mdi-note-plus"></i><span class="hide-menu">Products</span></a>
+                            <a href="../offices/index.php" class="sidebar-link"><i class="mdi mdi-note-outline"></i><span class="hide-menu">Show Offices</span></a>
+                        </li>
+                    </ul>
+                    <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="mdi mdi-receipt"></i><span class="hide-menu">Products</span></a>
+                    <ul aria-expanded="false" class="collapse first-level">
+                        <li class="sidebar-item">
+                            <a href="../products/index.php" class="sidebar-link"><i class="mdi mdi-note-outline"></i><span class="hide-menu">Show Products</span></a>
                         </li>
                     </ul>
                 </li>

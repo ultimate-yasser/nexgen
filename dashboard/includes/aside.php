@@ -17,19 +17,29 @@
                             <a href="../employees/index.php" class="sidebar-link"><i class="mdi mdi-note-outline"></i><span class="hide-menu">Show Employees</span></a>
                         </li>
                         <li class="sidebar-item">
-                            <a href="../employees/create.php" class="sidebar-link"><i class="mdi mdi-note-outline"></i><span class="hide-menu">Insert Employee</span></a>
+                            <a href="../employees/create.php" class="sidebar-link"><i class="mdi mdi-note-outline"></i><span class="hide-menu">Add Employee</span></a>
                         </li>
                     </ul>
+                </li>
+                <li class="sidebar-item">
                     <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="mdi mdi-receipt"></i><span class="hide-menu">Offices</span></a>
                     <ul aria-expanded="false" class="collapse first-level">
                         <li class="sidebar-item">
                             <a href="../offices/index.php" class="sidebar-link"><i class="mdi mdi-note-outline"></i><span class="hide-menu">Show Offices</span></a>
                         </li>
+                        <li class="sidebar-item">
+                            <a href="../offices/create.php" class="sidebar-link"><i class="mdi mdi-note-outline"></i><span class="hide-menu">Add Office</span></a>
+                        </li>
                     </ul>
+                </li>
+                <li class="sidebar-item">
                     <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="mdi mdi-receipt"></i><span class="hide-menu">Products</span></a>
                     <ul aria-expanded="false" class="collapse first-level">
                         <li class="sidebar-item">
                             <a href="../products/index.php" class="sidebar-link"><i class="mdi mdi-note-outline"></i><span class="hide-menu">Show Products</span></a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a href="../products/create.php" class="sidebar-link"><i class="mdi mdi-note-outline"></i><span class="hide-menu">Add Product</span></a>
                         </li>
                     </ul>
                 </li>

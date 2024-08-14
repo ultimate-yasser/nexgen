@@ -70,9 +70,11 @@ $documnet_title = "Employees"
                                                     ?></td>
                                                 <td>
                                                     <a href="edit.php?ssn=<?= $row['ssn'] ?>"><img width="20px" src="../../assets/images/edit.png" alt="edit"></a>
+                                                    <a href="delete.php?ssn=<?= $row['ssn'] ?>" onclick="return confirm('Are you sure you want to delete this employee?');"><img width="20px" src="../../assets/images/delete.png" alt="delete"></a>
                                                 </td>
                                             </tr>
                                         <?php } ?>
+                                    </tbody>
                                 </table>
                             </div>
                         </div>

@@ -3,8 +3,38 @@
 include "../includes/session.php";
 include "../includes/connect_database.php";
 include '../includes/validation.php';
-$result = $connect->query("SELECT * FROM employees");
-$data = $result->fetchAll(PDO::FETCH_ASSOC);
+$documnet_title = "Add Employee";
+
+$offices_result = $connect->query("SELECT * FROM offices");
+$offices_data = $offices_result->fetchAll(PDO::FETCH_ASSOC);
+
+$title_result = $connect->query("select * from employees group by employees.jobTitle");
+$title_data = $title_result->fetchAll(PDO::FETCH_ASSOC);
+
+$employees_result = $connect->query("select employees.employeeNumber, concat(employees.firstName, ' ', employees.lastName) as name from employees");
+$employees_data = $employees_result->fetchAll(PDO::FETCH_ASSOC);
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $errors = [];
+    $ssn = $_POST['ssn'];
+    $fname = $_POST['fname'];
+    $lname = $_POST['lname'];
+    $email = $_POST['email'];
+    $office = $_POST['office'];
+    $title = $_POST['title'];
+    if (checkDuplicate("employeeNumber", "employees", $ssn)){
+        $errors['ssn'] = "Duplicate SSN, Try another Number";
+    }
+    if (checkDuplicate("email", "employees", $email)){
+        $errors['email'] = "Duplicate Email, Try another Email";
+    }
+    if (empty($errors)){
+        $insert_result=$connect->query("INSERT INTO `employees` (`employeeNumber`, `lastName`, `firstName`, `email`, `officeCode`, `jobTitle`) VALUES ('$ssn', '$lname', '$fname', '$email', '$office', '$title');");
+        if (!$insert_result){
+            $errors['insert'] = 'Error inserting data into Database';
+        }
+    }
+}
 
 ?>
 
@@ -24,7 +54,7 @@ $data = $result->fetchAll(PDO::FETCH_ASSOC);
             <div class="page-breadcrumb">
                 <div class="row">
                     <div class="col-12 d-flex no-block align-items-center">
-                        <h4 class="page-title">Insert Employee</h4>
+                        <h4 class="page-title">Add Employee</h4>
                         <div class="ms-auto text-end">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
@@ -63,14 +93,14 @@ $data = $result->fetchAll(PDO::FETCH_ASSOC);
                                     <div class="form-group row">
                                         <label
                                             for="ssn"
-                                            class="col-sm-3 text-end control-label col-form-label">Code</label>
+                                            class="col-sm-3 text-end control-label col-form-label">SSN</label>
                                         <div class="col-sm-9">
                                             <input
                                                 type="text"
                                                 class="form-control"
                                                 id="ssn"
                                                 placeholder="SSN Here"
-                                                name="code" />
+                                                name="ssn" />
                                         </div>
                                     </div>
                                     <div class="form-group row">
@@ -88,64 +118,50 @@ $data = $result->fetchAll(PDO::FETCH_ASSOC);
                                     </div>
                                     <div class="form-group row">
                                         <label
-                                            for="fname"
+                                            for="lname"
                                             class="col-sm-3 text-end control-label col-form-label">Last Name</label>
                                         <div class="col-sm-9">
                                             <input
                                                 type="text"
                                                 class="form-control"
                                                 id="lname"
-                                                placeholder="First Name Here"
+                                                placeholder="Last Name Here"
                                                 name="lname" />
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <label
-                                            for="fname"
+                                            for="email"
                                             class="col-sm-3 text-end control-label col-form-label">Email</label>
                                         <div class="col-sm-9">
                                             <input
-                                                type="text"
+                                                type="email"
                                                 class="form-control"
-                                                id="fname"
-                                                placeholder="First Name Here"
+                                                id="email"
+                                                placeholder="email"
                                                 name="email" />
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <label
-                                            for="fname"
-                                            class="col-sm-3 text-end control-label col-form-label">age</label>
+                                            for="office"
+                                            class="col-sm-3 text-end control-label col-form-label">Office</label>
                                         <div class="col-sm-9">
-                                            <input
-                                                type="text"
-                                                class="form-control"
-                                                id="fname"
-                                                placeholder="First Name Here"
-                                                name="age" />
+                                            <select class="form-control" name="office">
+                                                <?php foreach ($offices_data as $office) { ?>
+                                                    <option value="<?= $office['officeCode'] ?>"><?= $office['city'] ?></option>
+                                                <?php } ?>
+                                            </select>
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <label
-                                            for="image"
-                                            class="col-sm-3 text-end control-label col-form-label">Image</label>
+                                            for="title"
+                                            class="col-sm-3 text-end control-label col-form-label">Job Title</label>
                                         <div class="col-sm-9">
-                                            <input
-                                                type="file"
-                                                class="form-control"
-                                                id="image"
-                                                placeholder="First Name Here"
-                                                name="image" />
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label
-                                            for="fname"
-                                            class="col-sm-3 text-end control-label col-form-label">Department</label>
-                                        <div class="col-sm-9">
-                                            <select class="form-control" name="dno">
-                                                <?php foreach ($dept_data as $dept) { ?>
-                                                    <option value="<?php echo $dept['dept_num'] ?>"><?php echo $dept['name'] ?></option>
+                                            <select class="form-control" name="title">
+                                                <?php foreach ($title_data as $title) { ?>
+                                                    <option value="<?= $title['jobTitle'] ?>"><?= $title['jobTitle'] ?></option>
                                                 <?php } ?>
                                             </select>
                                         </div>
